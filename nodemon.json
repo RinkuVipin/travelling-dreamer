@@ -1,0 +1,8 @@
+{
+    "env" : {
+        "DB_USER" : "harrys",
+        "DB_PASSWORD" : "harry123",
+        "DB_NAME": "places",
+        "JWT_TOKEN_KEY" : "token_travel_app_key"
+    } 
+}
