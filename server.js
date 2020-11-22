@@ -18,6 +18,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
+app.use(express.static(path.join("public")));
 
 //CORS policy
 app.use((req, res, next) => {
@@ -34,9 +35,13 @@ app.use("/api/places", placesRouter);
 app.use("/api/users", usersRouter);
 
 app.use((req, res, next) => {
-  const error = new HttpError("Oops! Something went Wrong.", 404);
-  throw error;
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
+
+// app.use((req, res, next) => {
+//   const error = new HttpError("Oops! Something went Wrong.", 404);
+//   throw error;
+// });
 
 app.use((error, req, res, next) => {
   if (req.file) {
